@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "Web Accessible Resources Test",
+  "version": "0.1",
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "web_accessible_resources": [
+    "war.html",
+    "war.js"
+  ]
+}

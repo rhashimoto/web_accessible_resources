@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8">
+  </head>
+  <body>
+    <!-- Load the extension WAR as an <iframe>. -->
+    <!-- Modify src attribute with your own extension ID -->
+    <iframe id="war" src="chrome-extension://icbkdkiglkleajgpmmdimnloojgkaakd/war.html"></iframe>
+
+    <pre id="log"></pre>
+    <script>
+     window.addEventListener('load', () => {
+       // Listen for messages from the WAR.
+       window.addEventListener('message', (e) => {
+         // TODO: Screen messages for origin.
+         console.log(e.data);
+         document.getElementById('log').textContent += 'extension replies "' + e.data + '"\n';
+       });
+
+       // Send a message to the extension via the WAR.
+       var war = document.getElementById('war');
+       war.contentWindow.postMessage('hello', '*');
+       document.getElementById('log').textContent += 'sent message to extension\n';
+     });
+    </script>
+  </body>
+</html>
